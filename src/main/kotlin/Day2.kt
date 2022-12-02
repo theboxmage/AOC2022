@@ -12,11 +12,12 @@ class Day2(private val file: String) {
     }
 
     private fun runGame(opponent: Char, player: Char): Int {
-        var winValue = 0
-        if(opponent == player) {
-            winValue = 3
+        val winValue = if(opponent == player) {
+            3
         } else if (winMap[opponent]!!.first == player) {
-            winValue = 6
+            6
+        } else {
+            0
         }
         return letterScore[player]!! + winValue
     }
