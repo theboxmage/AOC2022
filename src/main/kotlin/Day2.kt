@@ -1,8 +1,7 @@
 class Day2(private val file: String) {
     private val inputList: List<String> = FileUtils.readFileAsLines(this.file).map{"${it[0]+23} ${it[2]}"}
     private val letterScore = mapOf('X' to 1, 'Y' to 2, 'Z' to 3)
-    private val winMap = mapOf('X' to 'Y', 'Y' to 'Z', 'Z' to 'X')
-    private val loseMap = mapOf('X' to 'Z', 'Y' to 'X', 'Z' to 'Y')
+    private val winMap = mapOf('X' to Pair('Y', 'Z'), 'Y' to Pair('Z', 'X'), 'Z' to Pair('X', 'Y'))
     private val resultScore = mapOf('X' to 0, 'Y' to 3, 'Z' to 6)
     fun part1() {
         println("Part 1: ${inputList.sumOf{runGame(it[0], it[2])}}")
@@ -16,7 +15,7 @@ class Day2(private val file: String) {
         var winValue = 0
         if(opponent == player) {
             winValue = 3
-        } else if (winMap[opponent] == player) {
+        } else if (winMap[opponent]!!.first == player) {
             winValue = 6
         }
         return letterScore[player]!! + winValue
@@ -27,9 +26,9 @@ class Day2(private val file: String) {
         score += if(player == 'Y') {
             letterScore[opponent]!!
         } else if(player == 'X') {
-            letterScore[loseMap[opponent]!!]!!
+            letterScore[winMap[opponent]!!.second]!!
         } else {
-            letterScore[winMap[opponent]!!]!!
+            letterScore[winMap[opponent]!!.first]!!
         }
         return score + resultScore[player]!!
     }
