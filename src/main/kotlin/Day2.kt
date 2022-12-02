@@ -22,14 +22,12 @@ class Day2(private val file: String) {
     }
 
     private fun runGamePart2(opponent: Char, player: Char): Int {
-        var score = 0
-        score += if(player == 'Y') {
+        return  (if(player == 'Y') {
             letterScore[opponent]!!
         } else if(player == 'X') {
             letterScore[winMap[opponent]!!.second]!!
         } else {
             letterScore[winMap[opponent]!!.first]!!
-        }
-        return score + resultScore[player]!!
+        })+ resultScore[player]!!
     }
 }
