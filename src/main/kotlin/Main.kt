@@ -1,5 +1,5 @@
-fun main(args: Array<String>) {
-    val day = Day2("day2.txt")
+fun main() {
+    val day = Day3("day3.txt")
     day.part1()
     day.part2()
 }
