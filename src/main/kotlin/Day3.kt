@@ -4,14 +4,8 @@ class Day3(private val file: String) {
     fun part1() {
         var count = 0
         inputList.map { Pair(it.substring(0, it.length / 2), it.substring(it.length / 2)) }.forEach {
-            val firstCharMap: MutableMap<Char, Int> = mutableMapOf()
-            val secondCharMap: MutableMap<Char, Int> = mutableMapOf()
-            for (i in 0 until it.first.length) {
-                firstCharMap[it.first[i]] = convertToScore(it.first[i])
-                secondCharMap[it.second[i]] = convertToScore(it.second[i])
-            }
-            firstCharMap.filter { secondCharMap.containsKey(it.key) }.forEach {
-                count += it.value
+            it.first.split("").intersect((it.second.split("").toSet())).filter{it != ""}.forEach {
+                count += convertToScore(it[0])
             }
         }
         println("Part 1: $count")
