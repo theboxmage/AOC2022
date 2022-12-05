@@ -1,5 +1,5 @@
 fun main() {
-    val day = Day4("day4.txt")
+    val day = Day5("day5.txt")
     day.part1()
     day.part2()
 }
