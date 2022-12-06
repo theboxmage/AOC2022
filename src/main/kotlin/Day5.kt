@@ -32,8 +32,7 @@ class Day5(private val file: String) {
                 stage[line[2] - 1].add(0, stage[line[1] - 1].removeFirst())
             }
         }
-        stage.forEach { print(it[0])}
-        println()
+        println("Part 1: ${stage.joinToString (""){ it[0]}}")
     }
 
     fun part2() {
@@ -44,6 +43,6 @@ class Day5(private val file: String) {
                 stage[line[2] - 1].add(0, stage[line[1] - 1].removeAt(index))
             }
         }
-        stage.forEach { print(it[0]) }
+        println("Part 2: ${stage.joinToString (""){ it[0]}}")
     }
 }
