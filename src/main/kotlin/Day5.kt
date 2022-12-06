@@ -2,11 +2,10 @@ class Day5(private val file: String) {
     private val inputList = FileUtils.readFileAsLines(this.file)
     private var stage: MutableList<MutableList<String>> = mutableListOf()
     private val size: Int = (inputList[0].length + 1) / 4
-    private var linebreak = -1
+    private var linebreak = inputList.indexOf("")
 
     private fun start() {
         stage.clear()
-        linebreak = inputList.indexOf("")
         for (i in 0 until size) {
             stage.add(mutableListOf())
         }
