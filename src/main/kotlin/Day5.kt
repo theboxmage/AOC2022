@@ -6,12 +6,7 @@ class Day5(private val file: String) {
 
     private fun start() {
         stage.clear()
-        for (i in inputList.indices) {
-            if (inputList[i].trim() == "") {
-                linebreak = i
-                break
-            }
-        }
+        linebreak = inputList.indexOf("")
         for (i in 0 until size) {
             stage.add(mutableListOf())
         }
