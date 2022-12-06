@@ -6,7 +6,6 @@ class Day4(private val file: String) {
     fun part1() {
         println("Part 1: ${inputList
             .sumOf{if(checkRanges(it.first, it.second) == 2 || checkRanges(it.second, it.first) == 2) 1L else 0}}")
-
     }
 
     fun part2() {
