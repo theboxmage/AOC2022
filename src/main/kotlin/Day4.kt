@@ -4,26 +4,19 @@ class Day4(private val file: String) {
         .map { Pair(it[0]..it[1], it[2]..it[3]) }
 
     fun part1() {
-        var count = 0
-        for (i in inputList) {
-            if (i.first.contains(i.second.first) && i.first.contains(i.second.last)) {
-                count += 1
-            } else if (i.second.contains(i.first.first) && i.second.contains(i.first.last)) {
-                count += 1
-            }
-        }
-        println("Part 1: $count")
+        println("Part 1: ${inputList
+            .sumOf{if(checkRanges(it.first, it.second) == 2 || checkRanges(it.second, it.first) == 2) 1L else 0}}")
+
     }
 
     fun part2() {
-        var count = 0
-        for (i in inputList) {
-            if (i.first.contains(i.second.first) || i.first.contains(i.second.last)) {
-                count += 1
-            } else if (i.second.contains(i.first.first) || i.second.contains(i.first.last)) {
-                count += 1
-            }
-        }
-        println("Part 2: $count")
+        println("Part 2: ${inputList
+            .sumOf{if(checkRanges(it.first, it.second) > 0 || checkRanges(it.second, it.first) > 0) 1L else  0}}")
     }
+
+    private fun checkRanges(r1: IntRange, r2: IntRange): Int {
+        return r1.contains(r2.first).toInt() + r1.contains(r2.last).toInt()
+    }
+
+    fun Boolean.toInt() = if (this) 1 else 0
 }
