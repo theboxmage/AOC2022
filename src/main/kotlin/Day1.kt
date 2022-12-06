@@ -1,8 +1,8 @@
-class Day1(private var file: String) {
+class Day1: Day {
     private var foodList = arrayListOf<ArrayList<Int>>()
+    val input = FileUtils.readFileAsLines("day1.txt")
 
     init {
-        val input = FileUtils.readFileAsLines(this.file)
         foodList.add(arrayListOf())
 
         for(i in input) {
@@ -14,11 +14,11 @@ class Day1(private var file: String) {
         }
     }
 
-    fun part1() {
+    override fun part1() {
         println("Part 1: ${foodList.map{it.sum()}.max()}")
     }
 
-    fun part2() {
+    override fun part2() {
         println("Part 2: ${foodList.map{it.sum()}.sortedDescending().take(3).sum()}")
     }
 }

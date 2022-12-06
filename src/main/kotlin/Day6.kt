@@ -1,11 +1,11 @@
-class Day6(file: String) {
-    private var item = FileUtils.readFileAsLines(file)[0]
+class Day6 : Day {
+    private var item = FileUtils.readFileAsLines("day6.txt")[0]
 
-    fun part1() {
+    override fun part1() {
         println("Part 1: ${findDistinctIndex(4)}")
     }
 
-    fun part2() {
+    override fun part2() {
         println("Part 2: ${findDistinctIndex(14)}")
     }
 

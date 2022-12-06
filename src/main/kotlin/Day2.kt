@@ -1,13 +1,13 @@
-class Day2(private val file: String) {
-    private val inputList: List<String> = FileUtils.readFileAsLines(this.file).map{"${it[0]+23} ${it[2]}"}
+class Day2 : Day {
+    private val inputList: List<String> = FileUtils.readFileAsLines("day2.txt").map{"${it[0]+23} ${it[2]}"}
     private val letterScore = mapOf('X' to 1, 'Y' to 2, 'Z' to 3)
     private val winMap = mapOf('X' to Pair('Y', 'Z'), 'Y' to Pair('Z', 'X'), 'Z' to Pair('X', 'Y'))
     private val resultScore = mapOf('X' to 0, 'Y' to 3, 'Z' to 6)
-    fun part1() {
+    override fun part1() {
         println("Part 1: ${inputList.sumOf{runGame(it[0], it[2])}}")
     }
 
-    fun part2() {
+    override fun part2() {
         println("Part 2: ${inputList.sumOf{runGamePart2(it[0], it[2])}}")
     }
 

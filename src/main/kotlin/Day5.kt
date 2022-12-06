@@ -1,5 +1,5 @@
-class Day5(private val file: String) {
-    private val inputList = FileUtils.readFileAsLines(this.file)
+class Day5 : Day {
+    private val inputList = FileUtils.readFileAsLines("day5.txt")
     private var stage: MutableList<MutableList<String>> = mutableListOf()
     private val size: Int = (inputList[0].length + 1) / 4
     private var linebreak = inputList.indexOf("")
@@ -18,7 +18,7 @@ class Day5(private val file: String) {
         }
     }
 
-    fun part1() {
+    override fun part1() {
         start()
         for (i in linebreak + 1 until inputList.size) {
             val line = "\\d+".toRegex().findAll(inputList[i]).map { it.groupValues[0].toInt() }.toList()
@@ -29,7 +29,7 @@ class Day5(private val file: String) {
         println("Part 1: ${stage.joinToString (""){ it[0]}}")
     }
 
-    fun part2() {
+    override fun part2() {
         start()
         for (i in linebreak + 1 until inputList.size) {
             val line = "\\d+".toRegex().findAll(inputList[i]).map { it.groupValues[0].toInt() }.toList()
