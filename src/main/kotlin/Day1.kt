@@ -1,16 +1,12 @@
-import java.io.File
-
-class Day1(var file: String) {
+class Day1(private var file: String) {
     private var foodList = arrayListOf<ArrayList<Int>>()
 
     init {
-        val input = FileUtils.readFileAsLines(this.file);
-        var count = 0
+        val input = FileUtils.readFileAsLines(this.file)
         foodList.add(arrayListOf())
 
         for(i in input) {
             if(i.trim() == "") {
-                count++
                 foodList.add(arrayListOf())
             } else {
                 foodList.last().add(i.toInt())
