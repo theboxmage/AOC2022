@@ -1,12 +1,11 @@
 class Day7 : Day {
-    private var item = FileUtils.readFileAsLines("day7.txt").map{it.split(" ")}
     private var map: MutableMap<String, Int> = mutableMapOf("/" to 0)
     private var currentDirectory: MutableList<String> = mutableListOf()
+    private var item = FileUtils.readFileAsLines("day7.txt").map{it.split(" ")}
+
     override fun part1() {
-        for(i in item) {
-            parse(i)
-        }
-        println("Part 1: ${map.filter{it.value <= 100000}.toList().sumOf{it.second}}")
+        item.forEach{parse(it)}
+        println("Part 1: ${map.filter { it.value <= 100000 }.toList().sumOf { it.second }}")
     }
 
     override fun part2() {
@@ -33,4 +32,3 @@ class Day7 : Day {
         }
     }
 }
-
