@@ -1,7 +1,7 @@
 class Day7 : Day {
     private var item = FileUtils.readFileAsLines("day7.txt").map{it.split(" ")}
     private var map: MutableMap<String, Int> = mutableMapOf("/" to 0)
-    private var currentDirectory = mutableListOf("/")
+    private var currentDirectory: MutableList<String> = mutableListOf()
     override fun part1() {
         for(i in item) {
             parse(i)
@@ -20,12 +20,12 @@ class Day7 : Day {
             } else if(input[1] == "cd" && input[2] == "..") {
                 currentDirectory.removeLast()
             } else if(input[1] == "cd") {
-                currentDirectory.add(currentDirectory.joinToString("/") + "/" + input[2])
+                currentDirectory.add(currentDirectory.last()+ "/" + input[2])
             }
         } else {
             if(input[0] == "dir") {
-                if(!map.containsKey(currentDirectory.joinToString("/") + "/" + input[1])) {
-                    map[currentDirectory.joinToString("/") + "/" + input[1]] = 0
+                if(!map.containsKey(currentDirectory.last()+ "/" + input[1])) {
+                    map[currentDirectory.last() + "/" + input[1]] = 0
                 }
             } else {
                 currentDirectory.forEach{ map[it] = map[it]!! + input[0].toInt() }
