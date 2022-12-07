@@ -23,9 +23,7 @@ class Day7 : Day {
             }
         } else {
             if(input[0] == "dir") {
-                if(!map.containsKey(currentDirectory.last()+ "/" + input[1])) {
-                    map[currentDirectory.last() + "/" + input[1]] = 0
-                }
+                map[currentDirectory.last() + "/" + input[1]] = 0
             } else {
                 currentDirectory.forEach{ map[it] = map[it]!! + input[0].toInt() }
             }
