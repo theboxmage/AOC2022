@@ -1,7 +1,8 @@
 fun main(args: Array<String>) {
-    val days: Array<Day> = arrayOf(Day1(), Day2(), Day3(), Day4(), Day5(), Day6())
+    val days: Array<Day> = arrayOf(Day1(), Day2(), Day3(), Day4(), Day5(), Day6(), Day7())
 
     if(args.isEmpty()){
+        println("Printing all days:\n")
         for (i in days.indices) {
             println("Day ${i + 1}")
             days[i].part1()

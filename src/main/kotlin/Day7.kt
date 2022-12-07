@@ -10,7 +10,7 @@ class Day7 : Day {
     }
 
     override fun part2() {
-        println(map.filter{it.value > 30000000-(70000000-map["/"]!!)}.toList().sortedBy { it.second }[0])
+        println("Part 2: ${map.filter{it.value > 30000000-(70000000-map["/"]!!)}.toList().sortedBy { it.second }[0].second}")
     }
 
     private fun parse(input: List<String>) {
