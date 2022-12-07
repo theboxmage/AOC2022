@@ -13,18 +13,18 @@ class Day7 : Day {
     }
 
     private fun parse(input: List<String>) {
-        if(input[0] == "$") {
-            if(input[1] == "cd" && input[2] == "/" ) {
+        if(input[0] == "$" && input[1] == "cd" ) {
+            if(input[2] == "/" ) {
                 currentDirectory = mutableListOf("/")
-            } else if(input[1] == "cd" && input[2] == "..") {
+            } else if( input[2] == "..") {
                 currentDirectory.removeLast()
-            } else if(input[1] == "cd") {
+            } else {
                 currentDirectory.add(currentDirectory.last()+ "/" + input[2])
             }
         } else {
             if(input[0] == "dir") {
-                map[currentDirectory.last() + "/" + input[1]] = 0
-            } else {
+                    map[currentDirectory.last() + "/" + input[1]] = 0
+            } else if(input[0].toIntOrNull() != null) {
                 currentDirectory.forEach{ map[it] = map[it]!! + input[0].toInt() }
             }
         }
