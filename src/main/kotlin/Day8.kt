@@ -7,7 +7,7 @@ class Day8 : Day {
         var count = p
         for(i in 1 until input.size-1) {
             for(j in 1 until input[0].size-1) {
-                count += countVisibileFromExterior(j, i)
+                count += countVisibleFromExterior(j, i)
             }
         }
         println("Part 1: $count")
@@ -26,7 +26,7 @@ class Day8 : Day {
         println("Part 2: $max")
     }
 
-    fun countVisibileFromExterior(x: Int, y: Int): Int {
+    private fun countVisibleFromExterior(x: Int, y: Int): Int {
         var count = 0
         if ((0 until x).all { input[y][x] > input[y][it] }) count = 1
         else if ((x+1 until input.size).all { input[y][x] > input[y][it] }) count = 1
